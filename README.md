@@ -5,6 +5,12 @@ Welcome to the **Scikit-learn Cheatsheet** repository! This repository serves as
 
 ![Python Version](https://img.shields.io/badge/python-3.7%2B-brightgreen.svg)
 ![Status](https://img.shields.io/badge/status-active-success.svg)
+
+## Contribution 💡
+- If you have a suggestion that would make this repository better or want to add more resources or any links are not working, please fork the repo and create a [create a pull request.](https://github.com/thegeekyb0y/sklearn-cheat/edit/main/README.md) 
+- You can also simply open an [issue](https://github.com/thegeekyb0y/sklearn-cheat/issues/new)
+- Read the Contribution guidelines [here](https://github.com/thegeekyb0y/sklearn-cheat/CONTRIBUTIONS.md)
+  
 # Table of Contents
 
 ## Data Preprocessing
@@ -91,10 +97,6 @@ Welcome to the **Scikit-learn Cheatsheet** repository! This repository serves as
 
 ---
  
-## Contribution 💡
-- If you have a suggestion that would make this repository better or want to add more resources or any links are not working, please fork the repo and create a [create a pull request.](https://github.com/thegeekyb0y/learnpython/edit/main/README.md) 
-- You can also simply open an [issue](https://github.com/thegeekyb0y/learnpython/issues/new)
-
 ## Connect with Me 🤝
 - <a href="https://www.bento.me/adityatiwari" target="_blank">All my socials</a>
 
