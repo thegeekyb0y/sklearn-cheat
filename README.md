@@ -3,6 +3,8 @@
 
 Welcome to the **Scikit-learn Cheatsheet** repository! This repository serves as a quick reference guide for various machine learning models and techniques available in the Scikit-learn library.
 
+![Python Version](https://img.shields.io/badge/python-3.7%2B-brightgreen.svg)
+![Status](https://img.shields.io/badge/status-active-success.svg)
 # Table of Contents
 
 ## Data Preprocessing
@@ -96,4 +98,18 @@ Welcome to the **Scikit-learn Cheatsheet** repository! This repository serves as
 ## Connect with Me 🤝
 - <a href="https://www.bento.me/adityatiwari" target="_blank">All my socials</a>
 
+--- 
+
+## Data Preprocessing
+
+### Handling Missing Values
+- **SimpleImputer**: Fills in missing values using specified strategies such as mean, median, or most frequent.
+  
+  ```python
+  from sklearn.impute import SimpleImputer
+  import numpy as np
+
+  data = np.array([[1, 2], [np.nan, 3], [7, 6]])
+  imputer = SimpleImputer(strategy='mean')
+  imputed_data = imputer.fit_transform(data)
 
