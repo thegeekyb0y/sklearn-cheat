@@ -105,7 +105,7 @@ Welcome to the **Scikit-learn Cheatsheet** repository! This repository serves as
 ## Data Preprocessing
 
 ### Handling Missing Values
-- **SimpleImputer**: Fills in missing values using specified strategies such as mean, median, or most frequent.
+**SimpleImputer**: Fills in missing values using specified strategies such as mean, median, or most frequent.
   
 ```python
   from sklearn.impute import SimpleImputer
