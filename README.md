@@ -5,6 +5,7 @@ Welcome to the **Scikit-learn Cheatsheet** repository! This repository serves as
 
 ![Python Version](https://img.shields.io/badge/python-3.7%2B-brightgreen.svg)
 ![Status](https://img.shields.io/badge/status-active-success.svg)
+![visitors](https://visitor-badge.laobi.icu/badge?page_id=thegeekyb0y.sklearn-cheat)
 
 ## Contribution 💡
 - If you have a suggestion that would make this repository better or want to add more resources or any links are not working, please fork the repo and create a [create a pull request.](https://github.com/thegeekyb0y/sklearn-cheat/edit/main/README.md) 
