@@ -107,11 +107,33 @@ Welcome to the **Scikit-learn Cheatsheet** repository! This repository serves as
 ### Handling Missing Values
 - **SimpleImputer**: Fills in missing values using specified strategies such as mean, median, or most frequent.
   
-  ```python
+```python
   from sklearn.impute import SimpleImputer
   import numpy as np
 
   data = np.array([[1, 2], [np.nan, 3], [7, 6]])
   imputer = SimpleImputer(strategy='mean')
   imputed_data = imputer.fit_transform(data)
+```
+- **Iterative Imputer**: Unlike SimpleImputer, which uses a single value to fill in missing data, IterativeImputer models each feature with missing values as a function of other features in the dataset. It iteratively predicts missing values based on other available data, which can lead to more accurate imputations, especially in datasets with complex relationships among features.
+  
+```python
+  from sklearn.experimental import enable_iterative_imputer
+  from sklearn.impute import IterativeImputer
+  import numpy as np
 
+  data = np.array([[1, 2], [np.nan, 3], [7, 6]])
+  imputer = IterativeImputer()
+  imputed_data = imputer.fit_transform(data)
+```
+--- 
+## Feature Scaling
+- **StandardScaler**: This scaler standardizes features by removing the mean and scaling to unit variance. It is particularly useful when the features have different units or scales, as it ensures that each feature contributes equally to the distance calculations used in many machine learning algorithms. Standardization is often a prerequisite for algorithms that assume normally distributed data.
+```python
+from sklearn.preprocessing import StandardScaler
+import numpy as np
+
+data = np.array([[1, 2], [2, 3], [3, 4]])
+scaler = StandardScaler()
+scaled_data = scaler.fit_transform(data)
+```
