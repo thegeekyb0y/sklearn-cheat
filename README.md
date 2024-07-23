@@ -102,10 +102,11 @@ Welcome to the **Scikit-learn Cheatsheet** repository! This repository serves as
 
 --- 
 
-## Data Preprocessing
+# Data Preprocessing
 
-### Handling Missing Values
-**SimpleImputer**: Fills in missing values using specified strategies such as mean, median, or most frequent.
+## Handling Missing Values
+### SimpleImputer
+Fills in missing values using specified strategies such as mean, median, or most frequent.
   
 ```python
   from sklearn.impute import SimpleImputer
@@ -115,7 +116,8 @@ Welcome to the **Scikit-learn Cheatsheet** repository! This repository serves as
   imputer = SimpleImputer(strategy='mean')
   imputed_data = imputer.fit_transform(data)
 ```
-- **Iterative Imputer**: Unlike SimpleImputer, which uses a single value to fill in missing data, IterativeImputer models each feature with missing values as a function of other features in the dataset. It iteratively predicts missing values based on other available data, which can lead to more accurate imputations, especially in datasets with complex relationships among features.
+### Iterative Imputer 
+Unlike SimpleImputer, which uses a single value to fill in missing data, IterativeImputer models each feature with missing values as a function of other features in the dataset. It iteratively predicts missing values based on other available data, which can lead to more accurate imputations, especially in datasets with complex relationships among features.
   
 ```python
   from sklearn.experimental import enable_iterative_imputer
@@ -127,8 +129,9 @@ Welcome to the **Scikit-learn Cheatsheet** repository! This repository serves as
   imputed_data = imputer.fit_transform(data)
 ```
 --- 
-### Feature Scaling
-- **StandardScaler**: This scaler standardizes features by removing the mean and scaling to unit variance. It is particularly useful when the features have different units or scales, as it ensures that each feature contributes equally to the distance calculations used in many machine learning algorithms. Standardization is often a prerequisite for algorithms that assume normally distributed data.
+## Feature Scaling
+### StandardScaler: 
+This scaler standardizes features by removing the mean and scaling to unit variance. It is particularly useful when the features have different units or scales, as it ensures that each feature contributes equally to the distance calculations used in many machine learning algorithms. Standardization is often a prerequisite for algorithms that assume normally distributed data.
 ```python
 from sklearn.preprocessing import StandardScaler
 import numpy as np
@@ -139,7 +142,8 @@ scaled_data = scaler.fit_transform(data)
 ```
 
 
-- **MinMaxScaler**: MinMaxScaler transforms features by scaling them to a specified range, typically [0, 1]. This is particularly useful when the distribution of the data is not Gaussian and when you want to preserve the relationships between the data points. It is commonly used in neural networks, where inputs are often expected to be in a specific range.
+### MinMaxScaler: 
+MinMaxScaler transforms features by scaling them to a specified range, typically [0, 1]. This is particularly useful when the distribution of the data is not Gaussian and when you want to preserve the relationships between the data points. It is commonly used in neural networks, where inputs are often expected to be in a specific range.
 ```python
 from sklearn.preprocessing import MinMaxScaler
 import numpy as np
@@ -150,8 +154,9 @@ scaled_data = scaler.fit_transform(data)
 ```
 --- 
 
-### Encoding Categorical Features
-- **OneHotEncoder**: This encoder is used to convert categorical variables into a format that can be provided to machine learning algorithms, which typically require numerical input. OneHotEncoder creates binary columns for each category, allowing the model to treat them as separate features. This is particularly useful for non-ordinal categorical data, where the categories do not have a natural order.
+## Encoding Categorical Features
+### OneHotEncoder: 
+This encoder is used to convert categorical variables into a format that can be provided to machine learning algorithms, which typically require numerical input. OneHotEncoder creates binary columns for each category, allowing the model to treat them as separate features. This is particularly useful for non-ordinal categorical data, where the categories do not have a natural order.
 ```python
 from sklearn.preprocessing import OneHotEncoder
 import numpy as np
@@ -160,7 +165,8 @@ data = np.array([['red'], ['green'], ['blue']])
 encoder = OneHotEncoder()
 encoded_data = encoder.fit_transform(data).toarray()
 ```
-- **LabelEncoder**: LabelEncoder is used to convert categorical labels into numeric form. It assigns a unique integer to each category, which is useful for ordinal data where the order matters. This transformation is often required when preparing categorical data for machine learning algorithms that cannot handle non-numeric input.
+### LabelEncoder: 
+LabelEncoder is used to convert categorical labels into numeric form. It assigns a unique integer to each category, which is useful for ordinal data where the order matters. This transformation is often required when preparing categorical data for machine learning algorithms that cannot handle non-numeric input.
 ```python
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
@@ -171,8 +177,9 @@ encoded_data = encoder.fit_transform(data)
 ```
 ---
 
-### Feature Engineering
-- **PolynomialFeatures**: This transformer generates polynomial and interaction features. It is particularly useful for capturing non-linear relationships in the data, especially in regression tasks. By adding polynomial features, you can enhance the capability of linear models to fit more complex patterns.
+## Feature Engineering
+### PolynomialFeatures: 
+This transformer generates polynomial and interaction features. It is particularly useful for capturing non-linear relationships in the data, especially in regression tasks. By adding polynomial features, you can enhance the capability of linear models to fit more complex patterns.
 ```python
 from sklearn.preprocessing import PolynomialFeatures
 import numpy as np
@@ -182,7 +189,8 @@ poly = PolynomialFeatures(degree=2)
 poly_features = poly.fit_transform(data)
 ```
 
-- **FunctionTransformer**: FunctionTransformer allows you to apply any custom function to your dataset. This is useful for preprocessing steps that are not covered by existing transformers. You can define your own transformation logic and integrate it seamlessly into your machine learning pipeline.
+### FunctionTransformer: 
+FunctionTransformer allows you to apply any custom function to your dataset. This is useful for preprocessing steps that are not covered by existing transformers. You can define your own transformation logic and integrate it seamlessly into your machine learning pipeline.
 ```python
 from sklearn.preprocessing import FunctionTransformer
 import numpy as np
@@ -194,9 +202,10 @@ transformed_data = transformer.fit_transform(data)
 
 ---
 
-## Supervised Learning
-### Classification
-- **Logistic Regression**: A statistical model that uses a logistic function to model binary dependent variables. It is effective for binary classification problems and is widely used due to its simplicity and interpretability.
+# Supervised Learning
+## Classification
+### Logistic Regression:
+A statistical model that uses a logistic function to model binary dependent variables. It is effective for binary classification problems and is widely used due to its simplicity and interpretability.
 
 ```python
 from sklearn.linear_model import LogisticRegression
