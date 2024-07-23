@@ -218,7 +218,8 @@ model = LogisticRegression()
 model.fit(X_train, y_train)
 ```
 
-- **LinearSVC**: A linear Support Vector Classifier optimized for large datasets. It is particularly useful for high-dimensional data and works well when the classes are linearly separable.
+### LinearSVC
+A linear Support Vector Classifier optimized for large datasets. It is particularly useful for high-dimensional data and works well when the classes are linearly separable.
 ``` python
 from sklearn.svm import LinearSVC
 from sklearn.model_selection import train_test_split
@@ -230,7 +231,8 @@ model = LinearSVC()
 model.fit(X_train, y_train)
 ```
 
-- **KNeighborsClassifier**: A non-parametric method used for classification. It classifies data points based on the majority class among its k-nearest neighbors. It is effective for small datasets and when the decision boundary is irregular.
+### KNeighborsClassifier
+A non-parametric method used for classification. It classifies data points based on the majority class among its k-nearest neighbors. It is effective for small datasets and when the decision boundary is irregular.
 ```python
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
@@ -243,7 +245,8 @@ model.fit(X_train, y_train)
 ```
 
 
-- **SVC**: Support Vector Classifier that finds the optimal hyperplane that maximizes the margin between different classes. It works well for both linear and non-linear data.
+### SVC
+Support Vector Classifier that finds the optimal hyperplane that maximizes the margin between different classes. It works well for both linear and non-linear data.
 ```python
 from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
@@ -256,7 +259,9 @@ model.fit(X_train, y_train)
 ```
 
 
-- **DecisionTreeClassifier:** A model that uses a tree-like graph of decisions to classify data. It is easy to interpret and visualize, making it suitable for both classification and regression tasks.
+### DecisionTreeClassifier
+A model that uses a tree-like graph of decisions to classify data. It is easy to interpret and visualize, making it suitable for both classification and regression tasks.
+
 ``` python
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
@@ -268,7 +273,9 @@ model = DecisionTreeClassifier()
 model.fit(X_train, y_train)
 ```
 
-- **RandomForestClassifier**: An ensemble method that builds multiple decision trees and merges them together to improve accuracy and control overfitting. It is robust and effective for a variety of classification tasks.
+### RandomForestClassifier
+An ensemble method that builds multiple decision trees and merges them together to improve accuracy and control overfitting. It is robust and effective for a variety of classification tasks.
+
 ```python
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
@@ -282,7 +289,9 @@ model.fit(X_train, y_train)
 
 
 
-- **GaussianNB**: A Naive Bayes classifier based on applying Bayes' theorem with strong (naive) independence assumptions. It is particularly effective for large datasets and works well with normally distributed features.
+### GaussianNB
+A Naive Bayes classifier based on applying Bayes' theorem with strong (naive) independence assumptions. It is particularly effective for large datasets and works well with normally distributed features.
+
 ```python
 from sklearn.naive_bayes import GaussianNB
 from sklearn.model_selection import train_test_split
@@ -295,8 +304,11 @@ model.fit(X_train, y_train)
 ```
 
 
-### Regression
-- **LinearRegression**: A fundamental statistical technique used to model the relationship between a dependent variable and one or more independent variables. It assumes a linear relationship and is effective for predicting continuous outcomes.
+## Regression
+
+### LinearRegression
+A fundamental statistical technique used to model the relationship between a dependent variable and one or more independent variables. It assumes a linear relationship and is effective for predicting continuous outcomes.
+
 ```python
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
@@ -307,7 +319,8 @@ X_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test
 model = LinearRegression()
 model.fit(X_train, y_train)
 ```
-- **Ridge**: Ridge regression is a type of linear regression that includes a regularization term to prevent overfitting. It is particularly useful when dealing with multicollinearity among features.
+### Ridge
+Ridge regression is a type of linear regression that includes a regularization term to prevent overfitting. It is particularly useful when dealing with multicollinearity among features.
 ```python
 from sklearn.linear_model import Ridge
 from sklearn.model_selection import train_test_split
@@ -318,7 +331,8 @@ X_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test
 model = Ridge(alpha=1.0)
 model.fit(X_train, y_train)
 ```
-- **Lasso**: Lasso regression is similar to ridge regression but uses L1 regularization, which can shrink some coefficients to zero, effectively performing variable selection. It is useful when you want a simpler model.
+### Lasso
+Lasso regression is similar to ridge regression but uses L1 regularization, which can shrink some coefficients to zero, effectively performing variable selection. It is useful when you want a simpler model.
 ```python
 from sklearn.linear_model import Lasso
 from sklearn.model_selection import train_test_split
@@ -329,7 +343,8 @@ X_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test
 model = Lasso(alpha=0.1)
 model.fit(X_train, y_train)
 ```
-- **ElasticNet**: ElasticNet combines the penalties of both Lasso and Ridge regression. It is useful when there are multiple features correlated with each other, providing a balance between the two regularization techniques.
+### ElasticNet
+ElasticNet combines the penalties of both Lasso and Ridge regression. It is useful when there are multiple features correlated with each other, providing a balance between the two regularization techniques.
 ```python
 from sklearn.linear_model import ElasticNet
 from sklearn.model_selection import train_test_split
@@ -342,7 +357,8 @@ model.fit(X_train, y_train)
 ```
 
 
-- **KNeighborsRegressor**: KNeighborsRegressor is a non-parametric regression method that predicts the target value based on the average of the k-nearest neighbors. It is effective for capturing non-linear relationships.
+### KNeighborsRegressor
+KNeighborsRegressor is a non-parametric regression method that predicts the target value based on the average of the k-nearest neighbors. It is effective for capturing non-linear relationships.
 ```python
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.model_selection import train_test_split
@@ -355,7 +371,8 @@ model.fit(X_train, y_train)
 ```
 
 
-- **SVR**: Support Vector Regression (SVR) is an extension of SVC that applies the principles of SVM to regression problems. It is effective for high-dimensional data and can model non-linear relationships using kernel functions.
+### SVR
+Support Vector Regression (SVR) is an extension of SVC that applies the principles of SVM to regression problems. It is effective for high-dimensional data and can model non-linear relationships using kernel functions.
 ```python
 from sklearn.svm import SVR
 from sklearn.model_selection import train_test_split
@@ -368,7 +385,8 @@ model.fit(X_train, y_train)
 ```
 
 
-- **DecisionTreeRegressor**: DecisionTreeRegressor is a model that uses a tree structure to predict continuous outcomes. It is easy to interpret and can capture non-linear relationships in the data.
+### DecisionTreeRegressor
+DecisionTreeRegressor is a model that uses a tree structure to predict continuous outcomes. It is easy to interpret and can capture non-linear relationships in the data.
 ```python
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.model_selection import train_test_split
@@ -381,7 +399,9 @@ model.fit(X_train, y_train)
 ```
 
 
-- **RandomForestRegressor:** RandomForestRegressor is an ensemble method that builds multiple decision trees and combines their predictions to improve accuracy and reduce overfitting. It is robust and effective for various regression tasks.
+### RandomForestRegressor
+RandomForestRegressor is an ensemble method that builds multiple decision trees and combines their predictions to improve accuracy and reduce overfitting. It is robust and effective for various regression tasks.
+
 ```python
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
@@ -394,9 +414,13 @@ model.fit(X_train, y_train)
 ```
 --- 
 
-## Unsupervised Learning
-### Clustering
-- **KMeans**: KMeans is a popular clustering algorithm that partitions data into k distinct clusters based on feature similarity. It is widely used for exploratory data analysis and is effective for large datasets.
+# Unsupervised Learning
+
+## Clustering
+
+### KMeans
+KMeans is a popular clustering algorithm that partitions data into k distinct clusters based on feature similarity. It is widely used for exploratory data analysis and is effective for large datasets.
+
 ```python
 from sklearn.cluster import KMeans
 import numpy as np
@@ -409,7 +433,9 @@ clusters = kmeans.labels_
 ```
 
 
-- **AgglomerativeClustering**: Agglomerative Clustering is a hierarchical clustering method that builds a tree of clusters by iteratively merging the closest pairs of clusters. It is useful for discovering nested clusters in the data.
+### AgglomerativeClustering
+Agglomerative Clustering is a hierarchical clustering method that builds a tree of clusters by iteratively merging the closest pairs of clusters. It is useful for discovering nested clusters in the data.
+
 ``` python
 from sklearn.cluster import AgglomerativeClustering
 import numpy as np
@@ -420,7 +446,9 @@ model = AgglomerativeClustering(n_clusters=2)
 clusters = model.fit_predict(data)
 ```
 
-- **DBSCAN:** DBSCAN (Density-Based Spatial Clustering of Applications with Noise) is a clustering algorithm that groups together points that are closely packed together while marking as outliers points that lie alone in low-density regions. It is effective for identifying clusters of varying shapes and sizes.
+### DBSCAN
+DBSCAN (Density-Based Spatial Clustering of Applications with Noise) is a clustering algorithm that groups together points that are closely packed together while marking as outliers points that lie alone in low-density regions. It is effective for identifying clusters of varying shapes and sizes.
+
 ```python
 from sklearn.cluster import DBSCAN
 import numpy as np
@@ -431,7 +459,9 @@ model = DBSCAN(eps=1, min_samples=2)
 clusters = model.fit_predict(data)
 ```
 
-- **GaussianMixture**: Gaussian Mixture Models (GMM) are probabilistic models that assume all data points are generated from a mixture of several Gaussian distributions with unknown parameters. GMM is useful for soft clustering where each point can belong to multiple clusters.
+### GaussianMixture
+Gaussian Mixture Models (GMM) are probabilistic models that assume all data points are generated from a mixture of several Gaussian distributions with unknown parameters. GMM is useful for soft clustering where each point can belong to multiple clusters.
+
 ```python
 from sklearn.mixture import GaussianMixture
 import numpy as np
@@ -444,8 +474,11 @@ clusters = gmm.predict(data)
 ```
 
 
-### Dimensionality Reduction
-- **PCA (Principal Component Analysis)**: PCA is a technique used to reduce the dimensionality of a dataset while preserving as much variance as possible. It is commonly used for data visualization and preprocessing before applying machine learning algorithms.
+## Dimensionality Reduction
+
+### PCA (Principal Component Analysis)
+PCA is a technique used to reduce the dimensionality of a dataset while preserving as much variance as possible. It is commonly used for data visualization and preprocessing before applying machine learning algorithms.
+
 ```python
 from sklearn.decomposition import PCA
 import numpy as np
@@ -454,7 +487,9 @@ data = np.array([[1, 2], [2, 3], [3, 4]])
 pca = PCA(n_components=1)
 reduced_data = pca.fit_transform(data)
 ```
-- **t-SNE (t-distributed Stochastic Neighbor Embedding)**: t-SNE is a technique for dimensionality reduction that is particularly well-suited for visualizing high-dimensional datasets. It converts similarities between data points into joint probabilities and minimizes the Kullback-Leibler divergence between the original and reduced distributions.
+### t-SNE (t-distributed Stochastic Neighbor Embedding)
+t-SNE is a technique for dimensionality reduction that is particularly well-suited for visualizing high-dimensional datasets. It converts similarities between data points into joint probabilities and minimizes the Kullback-Leibler divergence between the original and reduced distributions.
+
 ```python
 from sklearn.manifold import TSNE
 import numpy as np
@@ -463,7 +498,8 @@ data = np.array([[1, 2], [2, 3], [3, 4]])
 tsne = TSNE(n_components=2)
 reduced_data = tsne.fit_transform(data)
 ```
-- **UMAP (Uniform Manifold Approximation and Projection):** UMAP is a dimensionality reduction technique that preserves the global structure of data while allowing for local relationships. It is effective for visualizing complex datasets.
+### UMAP (Uniform Manifold Approximation and Projection)
+UMAP is a dimensionality reduction technique that preserves the global structure of data while allowing for local relationships. It is effective for visualizing complex datasets.
 ```python
 import umap
 import numpy as np
