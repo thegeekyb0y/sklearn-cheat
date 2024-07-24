@@ -510,7 +510,259 @@ umap_model = umap.UMAP(n_components=2)
 reduced_data = umap_model.fit_transform(data)
 ```
 
+# Deep Learning
 
+## Neural Networks
+### Multilayer Perceptron (MLP): 
+A type of feedforward artificial neural network that consists of multiple layers of nodes, where each layer is fully connected to the next. MLPs are capable of learning complex patterns and are widely used for classification and regression tasks.
+
+  ```python
+  from tensorflow import keras
+  from tensorflow.keras import layers
+
+  model = keras.Sequential([
+      layers.Dense(64, activation='relu', input_shape=(input_dim,)),
+      layers.Dense(64, activation='relu'),
+      layers.Dense(1)
+  ])
+  model.compile(optimizer='adam', loss='mean_squared_error')
+```
+
+---
+
+### Convolutional Neural Networks (CNN): 
+Specialized neural networks designed for processing structured grid data, such as images. They use convolutional layers to automatically learn spatial hierarchies of features, making them highly effective for image classification and object detection tasks.
+```python
+from tensorflow import keras
+from tensorflow.keras import layers
+
+model = keras.Sequential([
+    layers.Conv2D(32, (3, 3), activation='relu', input_shape=(height, width, channels)),
+    layers.MaxPooling2D(pool_size=(2, 2)),
+    layers.Flatten(),
+    layers.Dense(64, activation='relu'),
+    layers.Dense(num_classes, activation='softmax')
+])
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+```
+
+---
+
+### Recurrent Neural Networks (RNN): 
+Designed for sequential data, allowing information to persist across time steps. RNNs are particularly effective for tasks such as time series prediction and natural language processing.
+``` python
+from tensorflow import keras
+from tensorflow.keras import layers
+
+model = keras.Sequential([
+    layers.SimpleRNN(64, input_shape=(timesteps, features)),
+    layers.Dense(1)
+])
+model.compile(optimizer='adam', loss='mean_squared_error')
+```
+
+### Long Short-Term Memory (LSTM): 
+A type of RNN capable of learning long-term dependencies. It uses special units called memory cells to store information over long periods, making it effective for tasks such as speech recognition and language modeling.
+```python
+from tensorflow import keras
+from tensorflow.keras import layers
+
+model = keras.Sequential([
+    layers.LSTM(64, input_shape=(timesteps, features)),
+    layers.Dense(1)
+])
+model.compile(optimizer='adam', loss='mean_squared_error')
+```
+### Gated Recurrent Unit (GRU): 
+A variant of LSTM that uses gating mechanisms to control the flow of information. GRUs are simpler and often faster to train than LSTMs while achieving comparable performance on many tasks.
+```python
+from tensorflow import keras
+from tensorflow.keras import layers
+
+model = keras.Sequential([
+    layers.GRU(64, input_shape=(timesteps, features)),
+    layers.Dense(1)
+])
+model.compile(optimizer='adam', loss='mean_squared_error')
+```
+### Transformers: 
+A type of neural network architecture that relies on self-attention mechanisms to process sequential data. Transformers have become the state-of-the-art for natural language processing tasks, such as translation and text generation.
+```python
+from tensorflow import keras
+from tensorflow.keras import layers
+
+inputs = keras.Input(shape=(sequence_length, feature_dim))
+x = layers.MultiHeadAttention(num_heads=8, key_dim=feature_dim)(inputs, inputs)
+x = layers.GlobalAveragePooling1D()(x)
+outputs = layers.Dense(num_classes, activation='softmax')(x)
+model = keras.Model(inputs, outputs)
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+```
+## Loss Functions
+### Mean Squared Error (MSE): 
+A common loss function used for regression tasks. It measures the average squared difference between predicted and actual values, penalizing larger errors more than smaller ones.
+```python
+from tensorflow.keras.losses import MeanSquaredError
+
+mse = MeanSquaredError()
+loss = mse(y_true, y_pred)
+```
+### Categorical Cross-Entropy: 
+A loss function used for multi-class classification tasks. It measures the dissimilarity between the predicted probability distribution and the true distribution.
+```python
+from tensorflow.keras.losses import CategoricalCrossentropy
+
+cce = CategoricalCrossentropy()
+loss = cce(y_true, y_pred)
+```
+### Binary Cross-Entropy: 
+A loss function used for binary classification tasks. It measures the performance of a model whose output is a probability value between 0 and 1.
+```python
+from tensorflow.keras.losses import BinaryCrossentropy
+
+bce = BinaryCrossentropy()
+loss = bce(y_true, y_pred)
+```
+# Optimization Algorithms
+### Stochastic Gradient Descent (SGD): 
+An optimization algorithm used to minimize the loss function by updating model weights iteratively based on the gradient of the loss function. It is widely used due to its simplicity and effectiveness.
+```python
+from tensorflow.keras.optimizers import SGD
+
+optimizer = SGD(learning_rate=0.01)
+model.compile(optimizer=optimizer, loss='mean_squared_error')
+```
+
+### Adam: 
+Adam (Adaptive Moment Estimation) is an adaptive learning rate optimization algorithm that combines the benefits of both AdaGrad and RMSProp. It is widely used for training deep learning models due to its efficiency and effectiveness.
+```python
+from tensorflow.keras.optimizers import Adam
+
+optimizer = Adam(learning_rate=0.001)
+model.compile(optimizer=optimizer, loss='mean_squared_error')
+```
+### RMSProp: 
+RMSProp is an adaptive learning rate optimization algorithm that adjusts the learning rate for each parameter based on the average of recent magnitudes of the gradients. It is particularly effective for non-stationary objectives.
+```python
+from tensorflow.keras.optimizers import RMSprop
+
+optimizer = RMSprop(learning_rate=0.001)
+model.compile(optimizer=optimizer, loss='mean_squared_error')
+```
+
+# Model Selection and Evaluation
+### Train-Test Split
+This technique is used to evaluate the performance of a machine learning model by splitting the dataset into two parts: one for training the model and the other for testing its performance. This helps assess how well the model generalizes to unseen data, reducing the risk of overfitting.
+```python
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import load_iris
+
+data = load_iris()
+X_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test_size=0.2)
+```
+
+### Cross-Validation: 
+This technique assesses the generalizability of a model by partitioning the data into multiple subsets. The model is trained on a subset and tested on the remaining data, repeating this process multiple times to obtain a more reliable estimate of model performance. This is particularly useful for small datasets.
+```python
+from sklearn.model_selection import cross_val_score
+from sklearn.datasets import load_iris
+from sklearn.linear_model import LogisticRegression
+
+data = load_iris()
+model = LogisticRegression()
+scores = cross_val_score(model, data.data, data.target, cv=5)
+```
+
+## Hyperparameter Tuning
+### GridSearchCV: 
+This method is used to find the optimal hyperparameters for a model by exhaustively searching through a specified parameter grid. It evaluates all combinations of parameters and selects the best-performing set based on cross-validation.
+``` python
+from sklearn.model_selection import GridSearchCV
+from sklearn.datasets import load_iris
+from sklearn.ensemble import RandomForestClassifier
+
+data = load_iris()
+model = RandomForestClassifier()
+param_grid = {'n_estimators': [10, 50, 100]}
+grid_search = GridSearchCV(model, param_grid, cv=5)
+grid_search.fit(data.data, data.target)
+```
+
+### RandomizedSearchCV: 
+This method samples a specified number of parameter combinations from a grid, making it more efficient than GridSearchCV, especially when dealing with a large parameter space.
+```python
+from sklearn.model_selection import RandomizedSearchCV
+from sklearn.datasets import load_iris
+from sklearn.ensemble import RandomForestClassifier
+from scipy.stats import randint
+
+data = load_iris()
+model = RandomForestClassifier()
+param_dist = {'n_estimators': randint(10, 100)}
+random_search = RandomizedSearchCV(model, param_dist, n_iter=10, cv=5)
+random_search.fit(data.data, data.target)
+```
+
+# Utility Functions
+## Metrics
+### accuracy_score: 
+This metric measures the proportion of correctly predicted instances out of the total instances. It is a commonly used metric for classification tasks.
+```python
+from sklearn.metrics import accuracy_score
+
+y_true = [0, 1, 1, 0]
+y_pred = [0, 1, 0, 0]
+accuracy = accuracy_score(y_true, y_pred)
+```
+
+### f1_score: 
+The F1 Score combines precision and recall into a single score. It is particularly useful when dealing with imbalanced datasets, as it provides a better measure of the incorrectly classified cases.
+```python
+from sklearn.metrics import f1_score
+
+y_true = [0, 1, 1, 0]
+y_pred = [0, 1, 0, 0]
+f1 = f1_score(y_true, y_pred)
+```
+
+### precision_score: 
+This metric measures the accuracy of positive predictions. It is defined as the ratio of true positive predictions to the total predicted positives.
+```python
+from sklearn.metrics import precision_score
+
+y_true = [0, 1, 1, 0]
+y_pred = [0, 1, 0, 0]
+precision = precision_score(y_true, y_pred)
+```
+
+### recall_score: 
+Recall measures the ability of a model to identify all relevant instances. It is defined as the ratio of true positive predictions to the total actual positives.
+``` python
+from sklearn.metrics import recall_score
+
+y_true = [0, 1, 1, 0]
+y_pred = [0, 1, 0, 0]
+recall = recall_score(y_true, y_pred)
+```
+### roc_auc_score: 
+ROC AUC Score measures the area under the receiver operating characteristic curve. It provides an aggregate measure of performance across all classification thresholds.
+```python
+from sklearn.metrics import roc_auc_score
+
+y_true = [0, 1, 1, 0]
+y_scores = [0.1, 0.4, 0.35, 0.8]
+roc_auc = roc_auc_score(y_true, y_scores)
+```
+
+### confusion_matrix: 
+Confusion matrix is a table used to evaluate the performance of a classification model. It provides a summary of the correct and incorrect predictions broken down by class.
+```python
+from sklearn.metrics import confusion_matrix
+
+y_true = [0, 1, 1, 0]
+y_pred = [0, 1, 0, 0]
+conf_matrix = confusion_matrix(y_true, y_pred)
+```
 
 
 
